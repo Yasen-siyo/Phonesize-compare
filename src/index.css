@@ -1,5 +1,4 @@
 :root {
-  color-scheme: light dark;
   --bg: #f7f7f5;
   --surface: #ffffff;
   --text: #1c1c1e;
@@ -19,7 +18,7 @@
   line-height: 1.5;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --bg: #121214;
     --surface: #1c1c1f;
     --text: #ececef;
@@ -35,12 +34,31 @@
     --c2: #f08a6c;
     --c3: #4fc79a;
     --c4: #c08af0;
+    color-scheme: dark;
   }
+}
+:root[data-theme='dark'] {
+    --bg: #121214;
+    --surface: #1c1c1f;
+    --text: #ececef;
+    --muted: #a0a0a8;
+    --line: #34343a;
+    --accent: #6c9cf0;
+    --warn-bg: #3a2f10;
+    --warn-text: #f3d68a;
+    --device-body: #3a3a40;
+    --device-edge: #6a6a72;
+    --device-screen: #050506;
+    --c1: #6c9cf0;
+    --c2: #f08a6c;
+    --c3: #4fc79a;
+    --c4: #c08af0;
+    color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--text); }
 button { font: inherit; cursor: pointer; }
-.app { max-width: 1100px; margin: 0 auto; padding: 0 16px 40px; }
+.app { max-width: 1100px; margin: 0 auto; padding-block: 0 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .top { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); }
 .brand { font-weight: 700; }
 h1 { font-size: 1.4rem; margin: 20px 0 6px; }
