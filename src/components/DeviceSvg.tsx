@@ -12,16 +12,26 @@ interface Props {
   image?: string
   /** cover: 화면을 꽉 채움(잘림), contain: 이미지 전체를 보여줌(여백) */
   imageFit?: 'cover' | 'contain'
+  /** true면 가로로 눕힌 모습(기기 위쪽이 왼쪽으로) */
+  landscape?: boolean
 }
 
 /** 기기 앞면을 mm 좌표로 그리고, 크기만 pxPerMm으로 맞춘다 */
-export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'currentColor', image, imageFit = 'cover' }: Props) {
+export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'currentColor', image, imageFit = 'cover', landscape = false }: Props) {
   const clipId = useId()
   const { width: W, height: H, cornerRadius, cornerShape } = d.body
   const s = screenSizeMm(d)
   const sx = (W - s.width) / 2
   const sy = (H - s.height) / 2
   const outline = variant === 'outline'
+  // 가로 모드: 세로 좌표(x, y)를 (y, W - x)로 옮긴다. 기기 위쪽이 왼쪽으로 간다
+  const rot = landscape ? `translate(0 ${W}) rotate(-90)` : undefined
+  const VW = landscape ? H : W
+  const VH = landscape ? W : H
+  // 이미지는 기기와 함께 돌리지 않고 보는 방향 그대로 화면을 채운다
+  const img = landscape
+    ? { x: sy, y: sx, w: s.height, h: s.width }
+    : { x: sx, y: sy, w: s.width, h: s.height }
 
   let cutout = null
   const c = d.cutout
@@ -68,13 +78,14 @@ export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'curr
   return (
     <svg
       className="device-svg"
-      width={W * pxPerMm}
-      height={H * pxPerMm}
-      viewBox={`0 0 ${W} ${H}`}
+      width={VW * pxPerMm}
+      height={VH * pxPerMm}
+      viewBox={`0 0 ${VW} ${VH}`}
       role="img"
-      aria-label={`${d.brand} ${d.model} 실제 크기 앞면`}
+      aria-label={`${d.brand} ${d.model} 실제 크기 앞면${landscape ? ', 가로' : ''}`}
     >
       <path
+        transform={rot}
         d={roundedRectPath(0.15, 0.15, W - 0.3, H - 0.3, cornerRadius, cornerShape)}
         fill={outline ? color : 'var(--device-body)'}
         fillOpacity={outline ? 0.08 : 1}
@@ -85,20 +96,21 @@ export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'curr
       {image && !outline && (
         <>
           <clipPath id={clipId}>
-            <path d={roundedRectPath(sx, sy, s.width, s.height, d.screen.cornerRadius, cornerShape)} />
+            <path d={roundedRectPath(img.x, img.y, img.w, img.h, d.screen.cornerRadius, cornerShape)} />
           </clipPath>
-          <rect x={sx} y={sy} width={s.width} height={s.height} fill="var(--device-screen)" clipPath={`url(#${clipId})`} />
+          <rect x={img.x} y={img.y} width={img.w} height={img.h} fill="var(--device-screen)" clipPath={`url(#${clipId})`} />
           <image
             href={image}
-            x={sx}
-            y={sy}
-            width={s.width}
-            height={s.height}
+            x={img.x}
+            y={img.y}
+            width={img.w}
+            height={img.h}
             preserveAspectRatio={imageFit === 'cover' ? 'xMidYMid slice' : 'xMidYMid meet'}
             clipPath={`url(#${clipId})`}
           />
         </>
       )}
+      <g transform={rot}>
       <path
         d={roundedRectPath(sx, sy, s.width, s.height, d.screen.cornerRadius, cornerShape)}
         fill={outline || image ? 'none' : 'var(--device-screen)'}
@@ -108,6 +120,7 @@ export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'curr
         vectorEffect="non-scaling-stroke"
       />
       {cutout}
+      </g>
     </svg>
   )
 }

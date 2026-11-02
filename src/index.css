@@ -139,3 +139,11 @@ footer { margin-top: 32px; font-size: 0.85rem; }
 .file-btn:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
 .file-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
 .image-note { color: var(--muted); font-size: 0.88rem; min-width: 0; }
+
+/* 세로·가로 전환 */
+.toolbar > .tabs { margin: 0; }
+.rotate-btn { display: inline-flex; align-items: center; gap: 8px; }
+.rotate-icon { width: 10px; height: 16px; border: 2px solid currentColor; border-radius: 3px; transition: transform 0.2s; }
+.rotate-icon.land { transform: rotate(-90deg); }
+@media (prefers-reduced-motion: reduce) { .rotate-icon { transition: none; } }
+.side.land { flex-wrap: wrap; width: auto; align-items: flex-start; }

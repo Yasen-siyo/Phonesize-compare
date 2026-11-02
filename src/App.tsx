@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Calibrate } from './components/Calibrate'
-import { Compare, type Mode } from './components/Compare'
+import { Compare, type Mode, type Orientation } from './components/Compare'
 import { devices } from './data/devices'
 import {
   CSS_NOMINAL_PX_PER_MM,
@@ -12,7 +12,7 @@ import {
 
 const DEFAULT_IDS = ['iphone-18-pro-max', 'galaxy-s25-ultra']
 
-function readUrl(): { ids: string[]; mode: Mode } {
+function readUrl(): { ids: string[]; mode: Mode; orientation: Orientation } {
   const p = new URLSearchParams(location.search)
   const ids = (p.get('d') ?? '')
     .split(',')
@@ -20,13 +20,14 @@ function readUrl(): { ids: string[]; mode: Mode } {
   return {
     ids: ids.length ? ids : DEFAULT_IDS,
     mode: p.get('mode') === 'overlay' ? 'overlay' : 'side',
+    orientation: p.get('o') === 'land' ? 'landscape' : 'portrait',
   }
 }
 
 export default function App() {
   const [cal, setCal] = useState<LoadedCalibration>(() => loadCalibration())
   const [calibrating, setCalibrating] = useState(() => loadCalibration().status === 'none')
-  const [{ ids, mode }, setView] = useState(readUrl)
+  const [{ ids, mode, orientation }, setView] = useState(readUrl)
   const [pinchZoomed, setPinchZoomed] = useState(false)
 
   // 브라우저 확대 배율(devicePixelRatio) 변화 감지
@@ -59,8 +60,9 @@ export default function App() {
     const p = new URLSearchParams()
     if (ids.length) p.set('d', ids.join(','))
     if (mode !== 'side') p.set('mode', mode)
+    if (orientation === 'landscape') p.set('o', 'land')
     history.replaceState(null, '', `${location.pathname}?${p}`)
-  }, [ids, mode])
+  }, [ids, mode, orientation])
 
   const done = useCallback((ppm: number) => {
     saveCalibration(ppm)
@@ -114,6 +116,8 @@ export default function App() {
             pxPerMm={pxPerMm}
             selected={ids}
             mode={mode}
+            orientation={orientation}
+            onOrientation={(o) => setView((v) => ({ ...v, orientation: o }))}
             onSelected={(next) => setView((v) => ({ ...v, ids: next }))}
             onMode={(m) => setView((v) => ({ ...v, mode: m }))}
           />

@@ -5,6 +5,7 @@ import { DeviceSvg } from './DeviceSvg'
 import { screenSizeMm } from '../lib/geometry'
 
 export type Mode = 'side' | 'overlay'
+export type Orientation = 'portrait' | 'landscape'
 
 const COLORS = ['var(--c1)', 'var(--c2)', 'var(--c3)', 'var(--c4)']
 
@@ -12,6 +13,8 @@ interface Props {
   pxPerMm: number
   selected: string[]
   mode: Mode
+  orientation: Orientation
+  onOrientation: (o: Orientation) => void
   onSelected: (ids: string[]) => void
   onMode: (m: Mode) => void
 }
@@ -23,7 +26,8 @@ const diff = (v: number, base: number) => {
   return `${d > 0 ? '+' : '−'}${fmt(Math.abs(d))}mm (${d > 0 ? '+' : '−'}${Math.abs((d / base) * 100).toFixed(1)}%)`
 }
 
-export function Compare({ pxPerMm, selected, mode, onSelected, onMode }: Props) {
+export function Compare({ pxPerMm, selected, mode, orientation, onOrientation, onSelected, onMode }: Props) {
+  const land = orientation === 'landscape'
   const [image, setImage] = useState<string | null>(null)
   const [fit, setFit] = useState<'cover' | 'contain'>('cover')
   // 이미지는 이 브라우저 안에서만 쓰고 어디에도 올리지 않는다
@@ -37,8 +41,11 @@ export function Compare({ pxPerMm, selected, mode, onSelected, onMode }: Props) 
   const toggle = (id: string) =>
     onSelected(selected.includes(id) ? selected.filter((s) => s !== id) : [...selected, id].slice(-4))
 
-  const maxW = Math.max(0, ...chosen.map((d) => d.body.width))
-  const maxH = Math.max(0, ...chosen.map((d) => d.body.height))
+  // 화면에 그려지는 가로·세로(가로 모드면 서로 바뀜)
+  const dw = (d: Device) => (land ? d.body.height : d.body.width)
+  const dh = (d: Device) => (land ? d.body.width : d.body.height)
+  const maxW = Math.max(0, ...chosen.map(dw))
+  const maxH = Math.max(0, ...chosen.map(dh))
 
   return (
     <section className="compare">
@@ -60,6 +67,14 @@ export function Compare({ pxPerMm, selected, mode, onSelected, onMode }: Props) 
             겹쳐서
           </button>
         </div>
+        <button
+          className="secondary rotate-btn"
+          onClick={() => onOrientation(land ? 'portrait' : 'landscape')}
+          aria-pressed={land}
+        >
+          <span aria-hidden="true" className={`rotate-icon${land ? ' land' : ''}`} />
+          {land ? '세로로 세우기' : '가로로 눕히기'}
+        </button>
       </div>
 
       <div className="image-bar">
@@ -105,10 +120,10 @@ export function Compare({ pxPerMm, selected, mode, onSelected, onMode }: Props) 
       ) : (
         <div className="stage" tabIndex={0} aria-label="실제 크기 비교 영역">
           {mode === 'side' ? (
-            <div className="side">
+            <div className={`side${land ? ' land' : ''}`}>
               {chosen.map((d, i) => (
                 <figure key={d.id} style={{ color: COLORS[i] }}>
-                  <DeviceSvg device={d} pxPerMm={pxPerMm} image={image ?? undefined} imageFit={fit} />
+                  <DeviceSvg device={d} pxPerMm={pxPerMm} image={image ?? undefined} imageFit={fit} landscape={land} />
                   <figcaption>{d.model}</figcaption>
                 </figure>
               ))}
@@ -119,9 +134,9 @@ export function Compare({ pxPerMm, selected, mode, onSelected, onMode }: Props) 
                 <div
                   key={d.id}
                   className="layer"
-                  style={{ left: ((maxW - d.body.width) / 2) * pxPerMm, top: (maxH - d.body.height) * pxPerMm }}
+                  style={{ left: ((maxW - dw(d)) / 2) * pxPerMm, top: (maxH - dh(d)) * pxPerMm }}
                 >
-                  <DeviceSvg device={d} pxPerMm={pxPerMm} variant="outline" color={COLORS[i]} />
+                  <DeviceSvg device={d} pxPerMm={pxPerMm} variant="outline" color={COLORS[i]} landscape={land} />
                 </div>
               ))}
             </div>
