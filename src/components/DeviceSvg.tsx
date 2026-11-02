@@ -51,7 +51,7 @@ export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'curr
   } else if (c.type === 'punchHole') {
     cutout = (
       <circle
-        cx={W / 2}
+        cx={sx + s.width * (c.x ?? 0.5)}
         cy={sy + c.top + c.diameter / 2}
         r={c.diameter / 2}
         fill={outline ? 'none' : '#000'}

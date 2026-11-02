@@ -30,11 +30,10 @@
     "ppi": 460
   },
   "cutout": {
-    "type": "sideIsland",
-    "length": 20.9,
-    "thickness": 6.1,
-    "right": 1.8,
-    "top": 8.0
+    "type": "punchHole",
+    "diameter": 3.2,
+    "top": 2.6,
+    "x": 0.93
   },
   "confidence": {
     "body.width": "official",

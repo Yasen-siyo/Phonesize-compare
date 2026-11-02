@@ -22,7 +22,8 @@
   "cutout": {
     "type": "punchHole",
     "diameter": 3.2,
-    "top": 2.2
+    "top": 2.2,
+    "x": 0.75
   },
   "confidence": {
     "body.width": "official",

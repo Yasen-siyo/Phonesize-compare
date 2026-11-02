@@ -6,7 +6,8 @@ export type Cutout =
   /** 다이나믹 아일랜드 같은 알약형. 화면 위쪽 가장자리에서 top만큼 떨어진 중앙에 위치 */
   | { type: 'island'; width: number; height: number; top: number }
   /** 펀치홀 카메라(원형) */
-  | { type: 'punchHole'; diameter: number; top: number }
+  /** 펀치홀 카메라(원형). x는 화면 폭 기준 중심 위치(0~1, 기본 0.5 = 가운데) */
+  | { type: 'punchHole'; diameter: number; top: number; x?: number }
   /** 화면 오른쪽 가장자리에 세로로 놓인 알약형(iPhone Duo 바깥 화면). right는 화면 오른쪽 끝에서, top은 화면 위에서 떨어진 거리 */
   | { type: 'sideIsland'; length: number; thickness: number; right: number; top: number }
   /** 화면 위쪽 가장자리에 붙은 노치 */
