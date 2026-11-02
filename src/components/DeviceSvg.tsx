@@ -1,6 +1,6 @@
 import { useId } from 'react'
 import type { Device } from '../types'
-import { roundedRectPath, screenSizeMm } from '../lib/geometry'
+import { roundedRectPath, rotateRadii, screenSizeMm } from '../lib/geometry'
 
 interface Props {
   device: Device
@@ -59,6 +59,19 @@ export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'curr
         vectorEffect="non-scaling-stroke"
       />
     )
+  } else if (c.type === 'sideIsland') {
+    cutout = (
+      <rect
+        x={sx + s.width - c.right - c.thickness}
+        y={sy + c.top}
+        width={c.thickness}
+        height={c.length}
+        rx={c.thickness / 2}
+        fill={outline ? 'none' : '#000'}
+        stroke={outline ? color : 'none'}
+        vectorEffect="non-scaling-stroke"
+      />
+    )
   } else if (c.type === 'notch') {
     const x0 = W / 2 - c.width / 2
     const x1 = W / 2 + c.width / 2
@@ -109,7 +122,7 @@ export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'curr
       {image && !outline && (
         <>
           <clipPath id={clipId}>
-            <path d={roundedRectPath(img.x, img.y, img.w, img.h, d.screen.cornerRadius, cornerShape)} />
+            <path d={roundedRectPath(img.x, img.y, img.w, img.h, landscape ? rotateRadii(d.screen.cornerRadius) : d.screen.cornerRadius, cornerShape)} />
           </clipPath>
           <rect x={img.x} y={img.y} width={img.w} height={img.h} fill="var(--device-screen)" clipPath={`url(#${clipId})`} />
           <image

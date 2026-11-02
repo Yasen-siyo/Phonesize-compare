@@ -7,6 +7,8 @@ export type Cutout =
   | { type: 'island'; width: number; height: number; top: number }
   /** 펀치홀 카메라(원형) */
   | { type: 'punchHole'; diameter: number; top: number }
+  /** 화면 오른쪽 가장자리에 세로로 놓인 알약형(iPhone Duo 바깥 화면). right는 화면 오른쪽 끝에서, top은 화면 위에서 떨어진 거리 */
+  | { type: 'sideIsland'; length: number; thickness: number; right: number; top: number }
   /** 화면 위쪽 가장자리에 붙은 노치 */
   | { type: 'notch'; width: number; height: number }
   /** 베젤에 있는 카메라(태블릿). 세로로 든 기준 위쪽(top) 또는 오른쪽(right) 베젤의 가운데 */
@@ -21,7 +23,8 @@ export interface Device {
     width: number
     height: number
     depth: number
-    cornerRadius: number
+    /** 하나면 네 모서리 모두, 배열이면 [왼쪽 위, 오른쪽 위, 오른쪽 아래, 왼쪽 아래] */
+    cornerRadius: number | [number, number, number, number]
     cornerShape: 'arc' | 'continuous'
   }
   screen: {
@@ -29,7 +32,8 @@ export interface Device {
     resolutionPx: [number, number] // [가로, 세로]
     /** 제조사 공시 ppi. 있으면 대각선(반올림된 값)보다 우선해 화면 크기를 계산한다 */
     ppi?: number
-    cornerRadius: number
+    /** 하나면 네 모서리 모두, 배열이면 [왼쪽 위, 오른쪽 위, 오른쪽 아래, 왼쪽 아래] */
+    cornerRadius: number | [number, number, number, number]
   }
   cutout: Cutout
   /** 필드 경로 → 신뢰도. 적혀 있지 않은 필드는 estimated로 본다 */

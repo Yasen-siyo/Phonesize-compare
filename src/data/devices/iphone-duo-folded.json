@@ -7,7 +7,12 @@
     "width": 84.1,
     "height": 117.8,
     "depth": 11.3,
-    "cornerRadius": 10.5,
+    "cornerRadius": [
+      2.0,
+      10.5,
+      10.5,
+      2.0
+    ],
     "cornerShape": "continuous"
   },
   "screen": {
@@ -16,14 +21,20 @@
       1398,
       2034
     ],
-    "cornerRadius": 8.8,
+    "cornerRadius": [
+      1.0,
+      8.8,
+      8.8,
+      1.0
+    ],
     "ppi": 460
   },
   "cutout": {
-    "type": "island",
-    "width": 20.9,
-    "height": 6.1,
-    "top": 1.8
+    "type": "sideIsland",
+    "length": 20.9,
+    "thickness": 6.1,
+    "right": 1.8,
+    "top": 8.0
   },
   "confidence": {
     "body.width": "official",
@@ -34,7 +45,10 @@
     "screen.ppi": "official"
   },
   "sources": [
-    "https://www.apple.com/iphone/compare/?modelList=iphone-17%2Ciphone-16%2Ciphone-16e"
+    "https://www.apple.com/iphone/compare/?modelList=iphone-17%2Ciphone-16%2Ciphone-16e",
+    "https://www.macworld.com/article/3268522/a-week-with-iphone-duo-folding-refined-if-not-perfected.html",
+    "https://www.techradar.com/phones/iphone/iphone-duo-hands-on",
+    "https://developer.apple.com/videos/play/tech-talks/111466/"
   ],
   "detect": {
     "cssViewport": [
