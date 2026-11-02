@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import type { Device } from '../types'
 import { devices } from '../data/devices'
 import { DeviceSvg } from './DeviceSvg'
@@ -23,6 +24,13 @@ const diff = (v: number, base: number) => {
 }
 
 export function Compare({ pxPerMm, selected, mode, onSelected, onMode }: Props) {
+  const [image, setImage] = useState<string | null>(null)
+  const [fit, setFit] = useState<'cover' | 'contain'>('cover')
+  // 이미지는 이 브라우저 안에서만 쓰고 어디에도 올리지 않는다
+  useEffect(() => () => {
+    if (image) URL.revokeObjectURL(image)
+  }, [image])
+
   const chosen = selected.map((id) => devices.find((d) => d.id === id)).filter(Boolean) as Device[]
   const base = chosen[0]
 
@@ -54,6 +62,44 @@ export function Compare({ pxPerMm, selected, mode, onSelected, onMode }: Props) 
         </div>
       </div>
 
+      <div className="image-bar">
+        <label className="file-btn">
+          <input
+            id="screen-image"
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              const f = e.target.files?.[0]
+              if (f) setImage(URL.createObjectURL(f))
+              e.target.value = ''
+            }}
+          />
+          {image ? '다른 이미지 고르기' : '화면에 이미지 넣기'}
+        </label>
+        {image && (
+          <>
+            <div className="tabs" role="tablist" aria-label="이미지 맞춤 방식">
+              <button role="tab" aria-selected={fit === 'cover'} onClick={() => setFit('cover')}>
+                꽉 채우기
+              </button>
+              <button role="tab" aria-selected={fit === 'contain'} onClick={() => setFit('contain')}>
+                전체 보기
+              </button>
+            </div>
+            <button className="link" onClick={() => setImage(null)}>
+              이미지 빼기
+            </button>
+          </>
+        )}
+        <span className="image-note">
+          {image
+            ? mode === 'overlay'
+              ? '이미지는 나란히 보기에서 보입니다.'
+              : '이미지는 내 브라우저에서만 쓰이고 어디에도 올라가지 않습니다.'
+            : '배경화면이나 스크린샷이 각 기기 화면에서 어떻게 보이는지 확인할 수 있습니다.'}
+        </span>
+      </div>
+
       {chosen.length === 0 ? (
         <p className="empty">위에서 기기를 골라 주세요.</p>
       ) : (
@@ -62,7 +108,7 @@ export function Compare({ pxPerMm, selected, mode, onSelected, onMode }: Props) 
             <div className="side">
               {chosen.map((d, i) => (
                 <figure key={d.id} style={{ color: COLORS[i] }}>
-                  <DeviceSvg device={d} pxPerMm={pxPerMm} />
+                  <DeviceSvg device={d} pxPerMm={pxPerMm} image={image ?? undefined} imageFit={fit} />
                   <figcaption>{d.model}</figcaption>
                 </figure>
               ))}

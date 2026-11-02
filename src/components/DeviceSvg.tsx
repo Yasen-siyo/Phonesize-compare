@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import type { Device } from '../types'
 import { roundedRectPath, screenSizeMm } from '../lib/geometry'
 
@@ -7,10 +8,15 @@ interface Props {
   /** outline: 겹쳐 보기용 반투명 외곽선 */
   variant?: 'solid' | 'outline'
   color?: string
+  /** 화면 영역에 넣을 이미지 URL */
+  image?: string
+  /** cover: 화면을 꽉 채움(잘림), contain: 이미지 전체를 보여줌(여백) */
+  imageFit?: 'cover' | 'contain'
 }
 
 /** 기기 앞면을 mm 좌표로 그리고, 크기만 pxPerMm으로 맞춘다 */
-export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'currentColor' }: Props) {
+export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'currentColor', image, imageFit = 'cover' }: Props) {
+  const clipId = useId()
   const { width: W, height: H, cornerRadius, cornerShape } = d.body
   const s = screenSizeMm(d)
   const sx = (W - s.width) / 2
@@ -76,9 +82,26 @@ export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'curr
         strokeWidth={outline ? 2 : 1.5}
         vectorEffect="non-scaling-stroke"
       />
+      {image && !outline && (
+        <>
+          <clipPath id={clipId}>
+            <path d={roundedRectPath(sx, sy, s.width, s.height, d.screen.cornerRadius, cornerShape)} />
+          </clipPath>
+          <rect x={sx} y={sy} width={s.width} height={s.height} fill="var(--device-screen)" clipPath={`url(#${clipId})`} />
+          <image
+            href={image}
+            x={sx}
+            y={sy}
+            width={s.width}
+            height={s.height}
+            preserveAspectRatio={imageFit === 'cover' ? 'xMidYMid slice' : 'xMidYMid meet'}
+            clipPath={`url(#${clipId})`}
+          />
+        </>
+      )}
       <path
         d={roundedRectPath(sx, sy, s.width, s.height, d.screen.cornerRadius, cornerShape)}
-        fill={outline ? 'none' : 'var(--device-screen)'}
+        fill={outline || image ? 'none' : 'var(--device-screen)'}
         stroke={outline ? color : 'none'}
         strokeDasharray={outline ? '4 3' : undefined}
         strokeWidth={1}
