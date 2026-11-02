@@ -43,6 +43,20 @@ export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'curr
         vectorEffect="non-scaling-stroke"
       />
     )
+  } else if (c.type === 'bezelCamera') {
+    const cx = c.side === 'right' ? W - sx / 2 : W / 2
+    const cy = c.side === 'right' ? H / 2 : sy / 2
+    cutout = (
+      <circle
+        cx={cx}
+        cy={cy}
+        r={c.diameter / 2}
+        fill={outline ? 'none' : 'var(--device-screen)'}
+        stroke={outline ? color : 'var(--device-edge)'}
+        strokeWidth={1}
+        vectorEffect="non-scaling-stroke"
+      />
+    )
   }
 
   return (

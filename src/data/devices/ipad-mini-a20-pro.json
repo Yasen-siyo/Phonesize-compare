@@ -1,0 +1,46 @@
+{
+  "id": "ipad-mini-a20-pro",
+  "brand": "Apple",
+  "model": "iPad mini (A20 Pro)",
+  "releaseYear": 2026,
+  "body": {
+    "width": 132.6,
+    "height": 195.3,
+    "depth": 5.4,
+    "cornerRadius": 9.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 8.5,
+    "resolutionPx": [
+      1512,
+      2316
+    ],
+    "ppi": 326,
+    "cornerRadius": 3.5
+  },
+  "cutout": {
+    "type": "bezelCamera",
+    "diameter": 2.6,
+    "side": "right"
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official",
+    "screen.ppi": "official"
+  },
+  "sources": [
+    "https://www.fonearena.com/blog/495750/apple-ipad-mini-2026-price-india-specifications.html",
+    "https://www.macworld.com/article/3060022/2026-ipad-mini-design-display-features-specs-release-date.html"
+  ],
+  "detect": {
+    "cssViewport": [
+      756,
+      1158,
+      2
+    ]
+  }
+}

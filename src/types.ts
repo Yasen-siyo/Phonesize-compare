@@ -7,6 +7,8 @@ export type Cutout =
   | { type: 'island'; width: number; height: number; top: number }
   /** 펀치홀 카메라(원형) */
   | { type: 'punchHole'; diameter: number; top: number }
+  /** 베젤에 있는 카메라(태블릿). 세로로 든 기준 위쪽(top) 또는 오른쪽(right) 베젤의 가운데 */
+  | { type: 'bezelCamera'; diameter: number; side: 'top' | 'right' }
 
 export interface Device {
   id: string
