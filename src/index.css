@@ -111,3 +111,23 @@ footer { margin-top: 32px; font-size: 0.85rem; }
   .specs { font-size: 0.82rem; }
   .actions .primary { flex: 1; }
 }
+
+/* 보정: 기준 물체를 끄는 손잡이와 화면 아래에 고정된 조절 막대 */
+.ref-card, .ref-coin, .ruler-wrap { position: relative; }
+.drag-handle {
+  position: absolute; top: 50%; right: -14px; width: 28px; height: 44px; transform: translateY(-50%);
+  border-radius: 8px; background: var(--accent); cursor: ew-resize; touch-action: none;
+  box-shadow: 0 0 0 3px var(--bg);
+}
+.drag-handle::before {
+  content: ''; position: absolute; inset: 12px 10px; border-left: 2px solid #fff; border-right: 2px solid #fff;
+}
+.calib-stage { padding-right: 20px; }
+.dock {
+  position: sticky; bottom: 0; z-index: 5; display: grid; gap: 4px;
+  margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))) 0 calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: var(--bg); border-top: 1px solid var(--line);
+}
+.dock .readout { margin: 0; font-size: 0.85rem; }
+.dock .actions { margin-top: 4px; }
