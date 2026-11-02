@@ -21,3 +21,8 @@ npm run build    # dist/ 에 정적 파일 생성
 ## 데이터 신뢰도
 
 본체 크기·두께·화면 대각선·해상도는 제조사 공식값입니다. 모서리 반경과 카메라 구멍 크기·위치는 아직 추정값이며 `confidence` 필드에 표시되지 않은 항목은 모두 추정값으로 봅니다.
+
+## 배포
+
+`main`에 push하면 GitHub Actions(`.github/workflows/deploy.yml`)가 빌드해서 GitHub Pages에 올립니다.
+처음 한 번은 저장소 Settings → Pages → Build and deployment → Source를 **GitHub Actions**로 바꿔야 합니다.
