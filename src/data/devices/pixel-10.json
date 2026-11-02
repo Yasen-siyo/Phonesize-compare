@@ -1,0 +1,41 @@
+{
+  "id": "pixel-10",
+  "brand": "Google",
+  "model": "Pixel 10",
+  "releaseYear": 2025,
+  "body": {
+    "width": 72.0,
+    "height": 152.8,
+    "depth": 8.6,
+    "cornerRadius": 11.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.3,
+    "resolutionPx": [
+      1080,
+      2424
+    ],
+    "cornerRadius": 9.5
+  },
+  "cutout": {
+    "type": "punchHole",
+    "diameter": 3.6,
+    "top": 2.6
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official"
+  },
+  "sources": [
+    "https://www.gsmarena.com/compare.php3?idPhone1=14799&idPhone2=13979"
+  ],
+  "detect": {
+    "uaModels": [
+      "Pixel 10"
+    ]
+  }
+}

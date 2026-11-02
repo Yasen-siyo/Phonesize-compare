@@ -1,0 +1,45 @@
+{
+  "id": "ipad-pro-13-m5",
+  "brand": "Apple",
+  "model": "iPad Pro 13 (M5)",
+  "releaseYear": 2025,
+  "body": {
+    "width": 215.5,
+    "height": 281.6,
+    "depth": 5.1,
+    "cornerRadius": 12.0,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 13,
+    "resolutionPx": [
+      2064,
+      2752
+    ],
+    "cornerRadius": 3.0,
+    "ppi": 264
+  },
+  "cutout": {
+    "type": "bezelCamera",
+    "diameter": 2.6,
+    "side": "right"
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official",
+    "screen.ppi": "official"
+  },
+  "sources": [
+    "https://www.apple.com/ipad/compare/"
+  ],
+  "detect": {
+    "cssViewport": [
+      1032,
+      1376,
+      2
+    ]
+  }
+}

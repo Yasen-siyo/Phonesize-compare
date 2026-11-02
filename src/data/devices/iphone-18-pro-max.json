@@ -34,7 +34,8 @@
     "screen.ppi": "official"
   },
   "sources": [
-    "https://www.apple.com/iphone-18-pro/specs/"
+    "https://www.apple.com/iphone-18-pro/specs/",
+    "https://www.apple.com/iphone/compare/?modelList=iphone-17%2Ciphone-16%2Ciphone-16e"
   ],
   "detect": {
     "cssViewport": [

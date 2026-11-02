@@ -1,0 +1,46 @@
+{
+  "id": "iphone-17e",
+  "brand": "Apple",
+  "model": "iPhone 17e",
+  "releaseYear": 2026,
+  "body": {
+    "width": 71.5,
+    "height": 146.7,
+    "depth": 7.8,
+    "cornerRadius": 10.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.1,
+    "resolutionPx": [
+      1170,
+      2532
+    ],
+    "cornerRadius": 8.8,
+    "ppi": 460
+  },
+  "cutout": {
+    "type": "island",
+    "width": 20.9,
+    "height": 6.1,
+    "top": 1.8
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official",
+    "screen.ppi": "official"
+  },
+  "sources": [
+    "https://www.apple.com/iphone/compare/?modelList=iphone-17%2Ciphone-16%2Ciphone-16e"
+  ],
+  "detect": {
+    "cssViewport": [
+      390,
+      844,
+      3
+    ]
+  }
+}

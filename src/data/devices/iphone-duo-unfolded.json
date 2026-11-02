@@ -1,0 +1,40 @@
+{
+  "id": "iphone-duo-unfolded",
+  "brand": "Apple",
+  "model": "iPhone Duo (펼침)",
+  "releaseYear": 2026,
+  "body": {
+    "width": 164.6,
+    "height": 117.8,
+    "depth": 5.2,
+    "cornerRadius": 10.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 7.6,
+    "resolutionPx": [
+      2670,
+      1878
+    ],
+    "cornerRadius": 7.5,
+    "ppi": 430
+  },
+  "cutout": {
+    "type": "punchHole",
+    "diameter": 3.2,
+    "top": 2.2
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official",
+    "screen.ppi": "official"
+  },
+  "sources": [
+    "https://www.apple.com/iphone/compare/?modelList=iphone-17%2Ciphone-16%2Ciphone-16e"
+  ],
+  "detect": {},
+  "fold": true
+}

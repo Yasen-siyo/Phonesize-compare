@@ -1,0 +1,45 @@
+{
+  "id": "ipad-air-11-m4",
+  "brand": "Apple",
+  "model": "iPad Air 11 (M4)",
+  "releaseYear": 2026,
+  "body": {
+    "width": 178.5,
+    "height": 247.6,
+    "depth": 6.1,
+    "cornerRadius": 11.0,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 11,
+    "resolutionPx": [
+      1640,
+      2360
+    ],
+    "cornerRadius": 3.0,
+    "ppi": 264
+  },
+  "cutout": {
+    "type": "bezelCamera",
+    "diameter": 2.6,
+    "side": "right"
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official",
+    "screen.ppi": "official"
+  },
+  "sources": [
+    "https://www.apple.com/ipad/compare/"
+  ],
+  "detect": {
+    "cssViewport": [
+      820,
+      1180,
+      2
+    ]
+  }
+}

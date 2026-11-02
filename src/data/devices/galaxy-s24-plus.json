@@ -1,0 +1,41 @@
+{
+  "id": "galaxy-s24-plus",
+  "brand": "Samsung",
+  "model": "Galaxy S24+",
+  "releaseYear": 2024,
+  "body": {
+    "width": 75.9,
+    "height": 158.5,
+    "depth": 7.7,
+    "cornerRadius": 9.0,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.7,
+    "resolutionPx": [
+      1440,
+      3120
+    ],
+    "cornerRadius": 7.5
+  },
+  "cutout": {
+    "type": "punchHole",
+    "diameter": 3.3,
+    "top": 2.4
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official"
+  },
+  "sources": [
+    "https://www.gsmarena.com/compare.php3?idPhone1=12771&idPhone2=12773&idPhone3=12772"
+  ],
+  "detect": {
+    "uaModels": [
+      "SM-S926"
+    ]
+  }
+}

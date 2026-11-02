@@ -1,0 +1,41 @@
+{
+  "id": "pixel-11-pro-xl",
+  "brand": "Google",
+  "model": "Pixel 11 Pro XL",
+  "releaseYear": 2026,
+  "body": {
+    "width": 76.5,
+    "height": 162.7,
+    "depth": 8.5,
+    "cornerRadius": 11.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.8,
+    "resolutionPx": [
+      1344,
+      2992
+    ],
+    "cornerRadius": 9.5
+  },
+  "cutout": {
+    "type": "punchHole",
+    "diameter": 3.6,
+    "top": 2.6
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official"
+  },
+  "sources": [
+    "https://www.gsmarena.com/compare.php3?idPhone1=14801&idPhone2=14800"
+  ],
+  "detect": {
+    "uaModels": [
+      "Pixel 11 Pro XL"
+    ]
+  }
+}

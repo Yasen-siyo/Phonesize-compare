@@ -1,0 +1,46 @@
+{
+  "id": "iphone-16-plus",
+  "brand": "Apple",
+  "model": "iPhone 16 Plus",
+  "releaseYear": 2024,
+  "body": {
+    "width": 77.8,
+    "height": 160.9,
+    "depth": 7.8,
+    "cornerRadius": 11.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.7,
+    "resolutionPx": [
+      1290,
+      2796
+    ],
+    "cornerRadius": 9.8,
+    "ppi": 460
+  },
+  "cutout": {
+    "type": "island",
+    "width": 20.9,
+    "height": 6.1,
+    "top": 1.8
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official",
+    "screen.ppi": "official"
+  },
+  "sources": [
+    "https://www.apple.com/iphone/compare/?modelList=iphone-17%2Ciphone-16%2Ciphone-16e"
+  ],
+  "detect": {
+    "cssViewport": [
+      430,
+      932,
+      3
+    ]
+  }
+}

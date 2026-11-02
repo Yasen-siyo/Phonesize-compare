@@ -59,6 +59,19 @@ export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'curr
         vectorEffect="non-scaling-stroke"
       />
     )
+  } else if (c.type === 'notch') {
+    const x0 = W / 2 - c.width / 2
+    const x1 = W / 2 + c.width / 2
+    const r = Math.min(c.height * 0.6, c.width / 4)
+    const yb = sy + c.height
+    cutout = (
+      <path
+        d={`M${x0 - 0.6} ${sy} Q${x0} ${sy} ${x0} ${sy + 0.6} V${yb - r} Q${x0} ${yb} ${x0 + r} ${yb} H${x1 - r} Q${x1} ${yb} ${x1} ${yb - r} V${sy + 0.6} Q${x1} ${sy} ${x1 + 0.6} ${sy} Z`}
+        fill={outline ? 'none' : '#000'}
+        stroke={outline ? color : 'none'}
+        vectorEffect="non-scaling-stroke"
+      />
+    )
   } else if (c.type === 'bezelCamera') {
     const cx = c.side === 'right' ? W - sx / 2 : W / 2
     const cy = c.side === 'right' ? H / 2 : sy / 2
@@ -120,6 +133,19 @@ export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'curr
         vectorEffect="non-scaling-stroke"
       />
       {cutout}
+      {d.fold && (
+        <line
+          x1={W / 2}
+          y1={0.4}
+          x2={W / 2}
+          y2={H - 0.4}
+          stroke={outline ? color : 'var(--device-edge)'}
+          strokeDasharray="3 3"
+          strokeOpacity={0.7}
+          strokeWidth={1}
+          vectorEffect="non-scaling-stroke"
+        />
+      )}
       </g>
     </svg>
   )

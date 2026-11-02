@@ -1,0 +1,41 @@
+{
+  "id": "galaxy-s24-ultra",
+  "brand": "Samsung",
+  "model": "Galaxy S24 Ultra",
+  "releaseYear": 2024,
+  "body": {
+    "width": 79.0,
+    "height": 162.3,
+    "depth": 8.6,
+    "cornerRadius": 6.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.8,
+    "resolutionPx": [
+      1440,
+      3120
+    ],
+    "cornerRadius": 5.0
+  },
+  "cutout": {
+    "type": "punchHole",
+    "diameter": 3.3,
+    "top": 2.4
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official"
+  },
+  "sources": [
+    "https://www.gsmarena.com/compare.php3?idPhone1=12771&idPhone2=12773&idPhone3=12772"
+  ],
+  "detect": {
+    "uaModels": [
+      "SM-S928"
+    ]
+  }
+}

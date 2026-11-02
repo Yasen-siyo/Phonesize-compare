@@ -1,0 +1,41 @@
+{
+  "id": "pixel-10-pro-xl",
+  "brand": "Google",
+  "model": "Pixel 10 Pro XL",
+  "releaseYear": 2025,
+  "body": {
+    "width": 76.6,
+    "height": 162.8,
+    "depth": 8.5,
+    "cornerRadius": 11.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.8,
+    "resolutionPx": [
+      1344,
+      2992
+    ],
+    "cornerRadius": 9.5
+  },
+  "cutout": {
+    "type": "punchHole",
+    "diameter": 3.6,
+    "top": 2.6
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official"
+  },
+  "sources": [
+    "https://m.gsmarena.com/google_pixel_10_pro_xl-ampp-13988.php"
+  ],
+  "detect": {
+    "uaModels": [
+      "Pixel 10 Pro XL"
+    ]
+  }
+}

@@ -12,7 +12,10 @@ export async function detectDevice(devices: Device[]): Promise<Device | null> {
     try {
       const { model } = await uaData.getHighEntropyValues(['model'])
       if (model) {
-        const hit = devices.find((d) => d.detect?.uaModels?.some((m) => model.startsWith(m)))
+        // Samsung은 모델 코드 접두사(SM-S948 등), 그 밖에는 이름이 정확히 같아야 한다(Pixel 11 / Pixel 11 Pro 구분)
+        const hit = devices.find((d) =>
+          d.detect?.uaModels?.some((m) => (m.startsWith('SM-') ? model.startsWith(m) : model === m)),
+        )
         if (hit) return hit
       }
     } catch {
@@ -33,5 +36,6 @@ export async function detectDevice(devices: Device[]): Promise<Device | null> {
 /** 기기 화면 전체가 CSS 화면 폭과 같다고 보고 pxPerMm을 추정한다 */
 export function estimatePxPerMm(d: Device): number {
   const w = Math.min(screen.width, screen.height)
-  return w / screenSizeMm(d).width
+  const s = screenSizeMm(d)
+  return w / Math.min(s.width, s.height)
 }

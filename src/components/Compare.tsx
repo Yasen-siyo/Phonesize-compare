@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { Device } from '../types'
-import { devices } from '../data/devices'
+import { devices, GROUPS, groupOf } from '../data/devices'
 import { DeviceSvg } from './DeviceSvg'
 import { screenSizeMm } from '../lib/geometry'
 
@@ -30,6 +30,20 @@ export function Compare({ pxPerMm, selected, mode, orientation, onOrientation, o
   const land = orientation === 'landscape'
   const [image, setImage] = useState<string | null>(null)
   const [fit, setFit] = useState<'cover' | 'contain'>('cover')
+  const [query, setQuery] = useState('')
+  // 한글 이름으로도 찾을 수 있게: 검색어를 낱말로 나눠 모두 들어 있는 기기만 보여준다
+  const KO: Record<string, string> = {
+    아이폰: 'iphone', 아이패드: 'ipad', 갤럭시: 'galaxy', 삼성: 'samsung', 픽셀: 'pixel', 구글: 'google', 애플: 'apple',
+    프로: 'pro', 맥스: 'max', 울트라: 'ultra', 플러스: '+', 에어: 'air', 미니: 'mini', 듀오: 'duo', 접힘: '접힘', 펼침: '펼침',
+  }
+  const tokens = query
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((t) => KO[t] ?? t)
+  const hay = (d: Device) => `${d.brand} ${d.model}`.toLowerCase().replace(/plus/g, '+')
+  const visible = (d: Device) =>
+    !tokens.length || selected.includes(d.id) || tokens.every((t) => hay(d).replace(/\s+/g, '').includes(t.replace('plus', '+')))
   // 이미지는 이 브라우저 안에서만 쓰고 어디에도 올리지 않는다
   useEffect(() => () => {
     if (image) URL.revokeObjectURL(image)
@@ -52,12 +66,31 @@ export function Compare({ pxPerMm, selected, mode, orientation, onOrientation, o
       <div className="toolbar">
         <fieldset className="picker">
           <legend>비교할 기기 (최대 4개, 처음 고른 기기가 기준)</legend>
-          {devices.map((d) => (
-            <label key={d.id} className="chip">
-              <input type="checkbox" checked={selected.includes(d.id)} onChange={() => toggle(d.id)} />
-              {d.model}
-            </label>
-          ))}
+          <input
+            id="device-search"
+            className="search"
+            type="search"
+            placeholder="기기 검색 (예: 갤럭시 울트라, iPad Pro)"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          {GROUPS.map((g) => {
+            const list = devices.filter((d) => groupOf(d) === g && visible(d))
+            if (!list.length) return null
+            return (
+              <div key={g} className="group">
+                <span className="group-name">{g}</span>
+                <div className="chips">
+                  {list.map((d) => (
+                    <label key={d.id} className="chip">
+                      <input type="checkbox" checked={selected.includes(d.id)} onChange={() => toggle(d.id)} />
+                      {d.model}
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
         </fieldset>
         <div className="tabs" role="tablist" aria-label="보기 방식">
           <button role="tab" aria-selected={mode === 'side'} onClick={() => onMode('side')}>

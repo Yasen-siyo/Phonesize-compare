@@ -1,0 +1,42 @@
+{
+  "id": "galaxy-a57",
+  "brand": "Samsung",
+  "model": "Galaxy A57",
+  "releaseYear": 2026,
+  "body": {
+    "width": 76.8,
+    "height": 161.5,
+    "depth": 6.9,
+    "cornerRadius": 9.0,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.7,
+    "resolutionPx": [
+      1080,
+      2340
+    ],
+    "cornerRadius": 7.5
+  },
+  "cutout": {
+    "type": "punchHole",
+    "diameter": 3.6,
+    "top": 2.8
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official"
+  },
+  "sources": [
+    "https://fo.gsmarena.com/samsung_galaxy_a57-14379.php",
+    "https://www.androidupdatetracker.com/compare/samsung-galaxy-a57/samsung-galaxy-a37"
+  ],
+  "detect": {
+    "uaModels": [
+      "SM-A576"
+    ]
+  }
+}

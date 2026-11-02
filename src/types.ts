@@ -7,6 +7,8 @@ export type Cutout =
   | { type: 'island'; width: number; height: number; top: number }
   /** 펀치홀 카메라(원형) */
   | { type: 'punchHole'; diameter: number; top: number }
+  /** 화면 위쪽 가장자리에 붙은 노치 */
+  | { type: 'notch'; width: number; height: number }
   /** 베젤에 있는 카메라(태블릿). 세로로 든 기준 위쪽(top) 또는 오른쪽(right) 베젤의 가운데 */
   | { type: 'bezelCamera'; diameter: number; side: 'top' | 'right' }
 
@@ -33,6 +35,8 @@ export interface Device {
   /** 필드 경로 → 신뢰도. 적혀 있지 않은 필드는 estimated로 본다 */
   confidence: Record<string, Confidence>
   sources: string[]
+  /** 폴더블을 펼친 상태: 가운데 접힘선을 그린다 */
+  fold?: boolean
   /** 방문자 기기 자동 추정용 단서 */
   detect?: {
     /** Android Client Hints의 model 값에 포함되는 문자열 */

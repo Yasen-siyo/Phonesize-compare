@@ -147,3 +147,10 @@ footer { margin-top: 32px; font-size: 0.85rem; }
 .rotate-icon.land { transform: rotate(-90deg); }
 @media (prefers-reduced-motion: reduce) { .rotate-icon { transition: none; } }
 .side.land { flex-wrap: wrap; width: auto; align-items: flex-start; }
+
+/* 기기 목록: 브랜드별 묶음과 검색 */
+.picker { flex-direction: column; flex-wrap: nowrap; gap: 10px; min-width: 0; flex: 1 1 100%; }
+.search { width: 100%; max-width: 360px; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--text); font: inherit; }
+.group { display: grid; gap: 6px; }
+.group-name { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.03em; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }

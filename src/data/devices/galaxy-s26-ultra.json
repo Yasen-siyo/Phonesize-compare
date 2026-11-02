@@ -1,0 +1,41 @@
+{
+  "id": "galaxy-s26-ultra",
+  "brand": "Samsung",
+  "model": "Galaxy S26 Ultra",
+  "releaseYear": 2026,
+  "body": {
+    "width": 78.1,
+    "height": 163.6,
+    "depth": 7.9,
+    "cornerRadius": 6.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.9,
+    "resolutionPx": [
+      1440,
+      3120
+    ],
+    "cornerRadius": 5.0
+  },
+  "cutout": {
+    "type": "punchHole",
+    "diameter": 3.3,
+    "top": 2.4
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official"
+  },
+  "sources": [
+    "https://www.gsmarena.com/compare.php3?idPhone1=14457&idPhone2=14456&idPhone3=14320"
+  ],
+  "detect": {
+    "uaModels": [
+      "SM-S948"
+    ]
+  }
+}
