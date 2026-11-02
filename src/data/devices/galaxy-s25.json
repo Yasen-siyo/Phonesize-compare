@@ -1,0 +1,41 @@
+{
+  "id": "galaxy-s25",
+  "brand": "Samsung",
+  "model": "Galaxy S25",
+  "releaseYear": 2025,
+  "body": {
+    "width": 70.5,
+    "height": 146.9,
+    "depth": 7.2,
+    "cornerRadius": 9.0,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.2,
+    "resolutionPx": [
+      1080,
+      2340
+    ],
+    "cornerRadius": 7.5
+  },
+  "cutout": {
+    "type": "punchHole",
+    "diameter": 3.4,
+    "top": 2.4
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official"
+  },
+  "sources": [
+    "https://www.samsung.com/sec/smartphones/galaxy-s25/specs/"
+  ],
+  "detect": {
+    "uaModels": [
+      "SM-S931"
+    ]
+  }
+}

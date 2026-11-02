@@ -1,0 +1,41 @@
+{
+  "id": "pixel-9",
+  "brand": "Google",
+  "model": "Pixel 9",
+  "releaseYear": 2024,
+  "body": {
+    "width": 72.0,
+    "height": 152.8,
+    "depth": 8.5,
+    "cornerRadius": 11.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.3,
+    "resolutionPx": [
+      1080,
+      2424
+    ],
+    "cornerRadius": 9.5
+  },
+  "cutout": {
+    "type": "punchHole",
+    "diameter": 3.6,
+    "top": 2.6
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official"
+  },
+  "sources": [
+    "https://store.google.com/product/pixel_9_specs"
+  ],
+  "detect": {
+    "uaModels": [
+      "Pixel 9"
+    ]
+  }
+}

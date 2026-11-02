@@ -1,0 +1,44 @@
+{
+  "id": "iphone-16",
+  "brand": "Apple",
+  "model": "iPhone 16",
+  "releaseYear": 2024,
+  "body": {
+    "width": 71.6,
+    "height": 147.6,
+    "depth": 7.8,
+    "cornerRadius": 10.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.1,
+    "resolutionPx": [
+      1179,
+      2556
+    ],
+    "cornerRadius": 8.8
+  },
+  "cutout": {
+    "type": "island",
+    "width": 20.9,
+    "height": 6.1,
+    "top": 1.8
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official"
+  },
+  "sources": [
+    "https://www.apple.com/iphone-16/specs/"
+  ],
+  "detect": {
+    "cssViewport": [
+      393,
+      852,
+      3
+    ]
+  }
+}
