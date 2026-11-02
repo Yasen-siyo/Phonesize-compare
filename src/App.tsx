@@ -10,13 +10,15 @@ import {
   type LoadedCalibration,
 } from './lib/calibration'
 
+const DEFAULT_IDS = ['iphone-18-pro-max', 'galaxy-s25-ultra']
+
 function readUrl(): { ids: string[]; mode: Mode } {
   const p = new URLSearchParams(location.search)
   const ids = (p.get('d') ?? '')
     .split(',')
     .filter((id) => devices.some((d) => d.id === id))
   return {
-    ids: ids.length ? ids : devices.slice(0, 2).map((d) => d.id),
+    ids: ids.length ? ids : DEFAULT_IDS,
     mode: p.get('mode') === 'overlay' ? 'overlay' : 'side',
   }
 }

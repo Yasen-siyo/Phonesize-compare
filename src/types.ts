@@ -23,6 +23,8 @@ export interface Device {
   screen: {
     diagonalInch: number
     resolutionPx: [number, number] // [가로, 세로]
+    /** 제조사 공시 ppi. 있으면 대각선(반올림된 값)보다 우선해 화면 크기를 계산한다 */
+    ppi?: number
     cornerRadius: number
   }
   cutout: Cutout

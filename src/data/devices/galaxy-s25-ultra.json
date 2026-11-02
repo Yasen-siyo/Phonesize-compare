@@ -1,0 +1,42 @@
+{
+  "id": "galaxy-s25-ultra",
+  "brand": "Samsung",
+  "model": "Galaxy S25 Ultra",
+  "releaseYear": 2025,
+  "body": {
+    "width": 77.6,
+    "height": 162.8,
+    "depth": 8.2,
+    "cornerRadius": 6.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.9,
+    "resolutionPx": [
+      1440,
+      3120
+    ],
+    "cornerRadius": 5.0
+  },
+  "cutout": {
+    "type": "punchHole",
+    "diameter": 3.3,
+    "top": 2.4
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official"
+  },
+  "sources": [
+    "https://www.samsung.com/sec/smartphones/galaxy-s25-ultra/specs/",
+    "https://m.gsmarena.com/samsung_galaxy_s25_ultra-ampp-13322.php"
+  ],
+  "detect": {
+    "uaModels": [
+      "SM-S938"
+    ]
+  }
+}

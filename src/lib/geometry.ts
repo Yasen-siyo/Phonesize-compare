@@ -2,11 +2,12 @@ import type { Device } from '../types'
 
 const MM_PER_INCH = 25.4
 
-/** 대각선(인치)과 해상도로 화면의 가로·세로(mm)를 구한다. 픽셀이 정사각형이라고 가정 */
+/** ppi(없으면 대각선 인치)와 해상도로 화면의 가로·세로(mm)를 구한다. 픽셀이 정사각형이라고 가정 */
 export function screenSizeMm(d: Device): { width: number; height: number } {
   const [px, py] = d.screen.resolutionPx
-  const diagPx = Math.hypot(px, py)
-  const mmPerPx = (d.screen.diagonalInch * MM_PER_INCH) / diagPx
+  const mmPerPx = d.screen.ppi
+    ? MM_PER_INCH / d.screen.ppi
+    : (d.screen.diagonalInch * MM_PER_INCH) / Math.hypot(px, py)
   return { width: px * mmPerPx, height: py * mmPerPx }
 }
 

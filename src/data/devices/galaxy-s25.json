@@ -16,7 +16,8 @@
       1080,
       2340
     ],
-    "cornerRadius": 7.5
+    "cornerRadius": 7.5,
+    "ppi": 416
   },
   "cutout": {
     "type": "punchHole",
@@ -28,7 +29,8 @@
     "body.height": "official",
     "body.depth": "official",
     "screen.diagonalInch": "official",
-    "screen.resolutionPx": "official"
+    "screen.resolutionPx": "official",
+    "screen.ppi": "official"
   },
   "sources": [
     "https://www.samsung.com/sec/smartphones/galaxy-s25/specs/"

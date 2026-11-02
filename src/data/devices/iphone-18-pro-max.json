@@ -1,0 +1,46 @@
+{
+  "id": "iphone-18-pro-max",
+  "brand": "Apple",
+  "model": "iPhone 18 Pro Max",
+  "releaseYear": 2026,
+  "body": {
+    "width": 78.0,
+    "height": 163.4,
+    "depth": 8.75,
+    "cornerRadius": 11.5,
+    "cornerShape": "continuous"
+  },
+  "screen": {
+    "diagonalInch": 6.9,
+    "resolutionPx": [
+      1320,
+      2868
+    ],
+    "ppi": 460,
+    "cornerRadius": 9.8
+  },
+  "cutout": {
+    "type": "island",
+    "width": 20.9,
+    "height": 6.1,
+    "top": 1.8
+  },
+  "confidence": {
+    "body.width": "official",
+    "body.height": "official",
+    "body.depth": "official",
+    "screen.diagonalInch": "official",
+    "screen.resolutionPx": "official",
+    "screen.ppi": "official"
+  },
+  "sources": [
+    "https://www.apple.com/iphone-18-pro/specs/"
+  ],
+  "detect": {
+    "cssViewport": [
+      440,
+      956,
+      3
+    ]
+  }
+}

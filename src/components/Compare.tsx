@@ -15,7 +15,7 @@ interface Props {
   onMode: (m: Mode) => void
 }
 
-const fmt = (n: number) => n.toFixed(1)
+const fmt = (n: number) => n.toFixed(2).replace(/0$/, '')
 const diff = (v: number, base: number) => {
   const d = v - base
   if (Math.abs(d) < 0.05) return '같음'
