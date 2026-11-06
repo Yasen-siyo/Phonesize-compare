@@ -21,9 +21,10 @@
   },
   "cutout": {
     "type": "punchHole",
-    "diameter": 3.2,
-    "top": 2.2,
-    "x": 0.75
+    "diameter": 4.4,
+    "top": 4.6,
+    "x": 0.714,
+    "faint": true
   },
   "confidence": {
     "body.width": "official",

@@ -54,7 +54,9 @@ export function DeviceSvg({ device: d, pxPerMm, variant = 'solid', color = 'curr
         cx={sx + s.width * (c.x ?? 0.5)}
         cy={sy + c.top + c.diameter / 2}
         r={c.diameter / 2}
-        fill={outline ? 'none' : '#000'}
+        fill={outline ? 'none' : c.faint ? '#8a96a8' : '#000'}
+        fillOpacity={c.faint && !outline ? 0.18 : 1}
+        strokeOpacity={c.faint ? 0.5 : 1}
         stroke={outline ? color : 'none'}
         vectorEffect="non-scaling-stroke"
       />
